@@ -1,4 +1,4 @@
-Feature: Secure Pay
+Feature: Secure Pay Test
 
   @sanity
   Scenario: User searches for the SecurePay website on Google and fills Contact Us page form
