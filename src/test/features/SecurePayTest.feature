@@ -1,5 +1,6 @@
 Feature: Secure Pay
 
+  @sanity
   Scenario: User searches for the SecurePay website on Google and fills Contact Us page form
     Given the user is on google search
     When the user searches "Securepay" on Google

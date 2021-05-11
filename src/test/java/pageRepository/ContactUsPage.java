@@ -4,9 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
-import static org.apache.commons.lang3.RandomStringUtils.*;
-
+import com.github.javafaker.Faker;
 
 public class ContactUsPage extends HomePage {
     @FindBy(css = "input[name='firstName']")
@@ -35,14 +33,16 @@ public class ContactUsPage extends HomePage {
     }
 
     public void fillForm() {
-        fName.sendKeys(randomAlphabetic(30));
-        lName.sendKeys(randomAlphabetic(30));
-        eMail.sendKeys(randomAlphabetic(30) + "@hotmail.com");
-        pNumber.sendKeys(randomNumeric(10));
-        wUrl.sendKeys("http://www." + randomAlphanumeric(10) + ".com");
-        company.sendKeys(randomAlphabetic(40));
+        Faker faker = new Faker();
+
+        fName.sendKeys(faker.name().firstName());
+        lName.sendKeys(faker.name().lastName());
+        eMail.sendKeys(faker.name().username()+"@gmail.com");
+        pNumber.sendKeys(faker.phoneNumber().cellPhone());
+        wUrl.sendKeys(faker.internet().url());
+        company.sendKeys(faker.company().name());
         selectDropDownByValue(reason, "0");
-        msg.sendKeys(randomAlphanumeric(40));
+        msg.sendKeys(faker.lorem().sentences(30).toString());
     }
 }
 
